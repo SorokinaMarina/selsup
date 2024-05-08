@@ -1,0 +1,13 @@
+.form {
+  width: 37%;
+  margin: 0 auto;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__fieldset {
+    border: none;
+    width: 100%;
+  }
+}

@@ -1,0 +1,16 @@
+.input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+
+  &__element {
+    width: 60%;
+    min-width: 200px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0;
+  }
+}
