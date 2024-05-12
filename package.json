@@ -14,7 +14,6 @@
     "deploy": "gh-pages -d .next"
   },
   "dependencies": {
-    "@next/swc-win32-x64-msvc": "^14.2.3",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "gh-pages": "^6.1.1",
