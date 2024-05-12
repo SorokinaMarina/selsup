@@ -15,5 +15,10 @@ export interface Model {
 
 export interface Props {
   params: Param[];
-  model: Model[];
+  model: Model;
+}
+
+export interface Select {
+  id: number;
+  value: string[];
 }

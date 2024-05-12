@@ -1,0 +1,12 @@
+.model-element {
+  width: 35%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 20px;
+  align-items: center;
+
+  &__value {
+    text-align: center;
+  }
+}

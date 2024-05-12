@@ -1,7 +1,8 @@
 "use client";
 import "./Input.scss";
-import { Param, ParamValue } from "@/utils/interface";
+import { Param, ParamValue, Select } from "@/utils/interface";
 import { Dispatch, SetStateAction } from "react";
+import { select } from "@/utils/constants";
 
 interface InputProps {
   item: Param;
@@ -26,7 +27,11 @@ export default function Input({
   });
 
   // Функция-слушатель клика записывает данные в массив paramValues
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
+  function handleChange(
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>,
+  ): void {
     // Проверяем, есть ли в массиве с объектами paramValues совпадения по id с полем ввода
     const existId = paramValues.some(
       (item: ParamValue): boolean => item.paramId === +e.target.id,
@@ -53,17 +58,39 @@ export default function Input({
       localStorage.setItem("paramValues", JSON.stringify(updatedValues));
     }
   }
+
   return (
     <label className="input">
       {name}
-      <input
-        id={String(id)}
-        className="input__element"
-        type={type}
-        name={name}
-        onChange={handleChange}
-        value={values?.value || ""}
-      />
+      {(type === "text" || type === "number") && (
+        <input
+          id={String(id)}
+          className="input__element"
+          type={type}
+          name={name}
+          onChange={handleChange}
+          value={values?.value || ""}
+        />
+      )}
+      {type === "select" && (
+        <select
+          className="input__element input__element_select"
+          id={String(id)}
+          name={name}
+          onChange={handleChange}
+          value={values?.value}
+        >
+          {select.map((item: Select) => {
+            if (item.id === id) {
+              return item.value.map((el: string) => (
+                <option className="input__option" key={el} value={el}>
+                  {el}
+                </option>
+              ));
+            }
+          })}
+        </select>
+      )}
     </label>
   );
 }
